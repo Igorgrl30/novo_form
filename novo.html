@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Cadastro</title>
+    <style>
+       
+        .pass { color: green; }
+        .fail { color: red; }
+
+    body{
+        background-image:url('o-que-e-enfermagem.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+    
+
+
+
+    </style>
+</head>
+<body><br><br><br><br><br><br><br><br>
+    <center><h2>Verificação de Cadastro</h2>
+
+    <!-- Formulário para entrada de dados -->
+ 
+ nome: <input id="nome"><br><br>
+idade: <input id="idade"><br><br>
+cpf : <input maxlength="11" id = "cpf"><br><br>
+sintomas : <input id="sintomas"><br><br>
+
+<button onclick="verificarCadastro()">Verificar</button>
+<div id="resultados"></div>
+
+    <script>
+        // Função para verificar nome e idade
+        function verificarCadastro() {
+            // Limpar resultados anteriores
+            const resultadosDiv = document.getElementById('resultados');
+            resultadosDiv.innerHTML = '';
+
+            // Obter valores de entrada
+            const nome = document.getElementById('nome').value;
+            const idade =document.getElementById('idade').value;
+            const cpf =document.getElementById('cpf').value;
+            const sintomas=document.getElementById('sintomas').value;
+            // Validar nome (deve ter pelo menos 3 letras)
+            if (nome.length >=3 &&  idade >= 18 && idade <= 120 && cpf.length===11 && !isNaN(cpf)  && sintomas.length>=5 && sintomas.length <=100){
+                sessionStorage.setItem("nome", nome);
+                sessionStorage.setItem("idade", idade);
+                sessionStorage.setItem("cpf", cpf);
+                sessionStorage.setItem("sintomas", sintomas);
+                window.location.href ="dr/dr.html";
+            
+            } else {
+             alert('ACESSO NEGADO:verifique as informações.');
+
+            }
+
+            }
+            
+            
+        
+    
+    </script>
+</body>
+</html>
